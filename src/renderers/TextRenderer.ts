@@ -1,5 +1,5 @@
 import { SketchRenderer } from './SketchRenderer';
-import { TreeNode } from '../types';
+import { ResizeConstraints, TreeNode } from '../types';
 import { makeTextLayer } from '../jsonUtils/textLayers';
 import { makeRect } from '../jsonUtils/models';
 import { TextStyles } from '../sharedStyles/TextStyles';
@@ -22,7 +22,7 @@ export class TextRenderer extends SketchRenderer {
       resolvedName,
       props.textNodes,
       style,
-      props.resizingConstraint,
+      props.resizingConstraint as ResizeConstraints,
       props.shadows,
     );
 

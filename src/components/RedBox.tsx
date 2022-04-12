@@ -74,7 +74,7 @@ export class RedBox extends React.Component<Props> {
         </View>
       );
     }
-
+    // @ts-ignore
     let frames: ErrorStackParser.StackFrame[] | undefined;
     let parseError: Error | undefined;
 

@@ -108,9 +108,9 @@ export const buildTree = (bridge: PlatformBridge) => (element: React.ReactElemen
   const json = renderer.toJSON();
   if (!json) {
     throw new Error('Cannot render react element');
-  }
+  } // @ts-ignore
   const yogaNode = computeYogaTree(bridge)(json, new Context());
-  yogaNode.calculateLayout(undefined, undefined, yoga.DIRECTION_LTR);
+  yogaNode.calculateLayout(undefined, undefined, yoga.DIRECTION_LTR); // @ts-ignore
   const tree = reactTreeToFlexTree(json, yogaNode, new Context());
 
   return tree;

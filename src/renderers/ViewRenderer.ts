@@ -2,7 +2,7 @@ import { FileFormat1 as FileFormat } from '@sketch-hq/sketch-file-format-ts';
 import { SketchRenderer } from './SketchRenderer';
 import { makeRect } from '../jsonUtils/models';
 import { makeRectShapeLayer, makeShapeGroup } from '../jsonUtils/shapeLayers';
-import { TreeNode } from '../types';
+import { ResizeConstraints, TreeNode } from '../types';
 import { createBorders } from '../jsonUtils/borders';
 import { hasAnyDefined } from '../utils/hasAnyDefined';
 import { Props } from '../components/View';
@@ -83,7 +83,7 @@ export class ViewRenderer extends SketchRenderer {
       layout.width,
       layout.height,
       radii,
-      props.resizingConstraint,
+      props.resizingConstraint as ResizeConstraints,
     );
 
     const content = makeShapeGroup(frame, [shapeLayer], style, props.shadows);

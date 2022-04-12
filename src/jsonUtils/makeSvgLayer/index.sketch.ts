@@ -1,4 +1,6 @@
 import { FileFormat1 as FileFormat } from '@sketch-hq/sketch-file-format-ts';
+// @ts-ignore
+import DOM from 'sketch/dom';
 import { toSJSON } from '../sketchJson/toSJSON';
 
 import { LayoutInfo } from '../../types';
@@ -8,8 +10,10 @@ export function makeSvgLayer(_layout: LayoutInfo, name: string, svg: string): Fi
   const svgData = svgString.dataUsingEncoding(NSUTF8StringEncoding);
   const svgImporter = MSSVGImporter.svgImporter();
   svgImporter.prepareToImportFromData(svgData);
+  const svgNativeLayer = svgImporter.importAsLayer();
+  const svgLayer = DOM.Group.fromNative(svgNativeLayer).layers[0];
 
-  const frame = NSMakeRect(0, 0, svgImporter.graph().width(), svgImporter.graph().height());
+  const frame = NSMakeRect(0, 0, svgLayer.frame.width, svgLayer.frame.height);
   const root = MSLayerGroup.alloc().initWithFrame(frame);
   root.name = name;
 
